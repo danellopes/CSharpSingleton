@@ -16,4 +16,12 @@ By implementing Dependency Injection, we can inject a "dummy" or "mock" database
 
 However, this approach may not make much sense when used with platforms like Salesforce. Salesforce tests do write to the database, but the platform always performs a rollback at the end of each test. This means that any changes made during the test are reversed, ensuring that the database remains in its original state after testing. This rollback feature reduces the necessity of using a dummy database class for testing in Salesforce.
 
+### Monostate
+
+The Monostate pattern is a unique approach to addressing the Singleton design pattern's limitations. Unlike the Singleton pattern, which restricts object instantiation by making the constructor private and providing a single global access point, the Monostate pattern allows developers to create as many instances of a class as they like. However, the catch is that all these instances share the same state.
+
+This is achieved by making all the class properties static. In programming, a static property belongs to the class itself, not any specific object instance. Therefore, even though multiple objects may be created, they all share the same static properties. If you modify a static property in one instance, it affects all other instances.
+
+Therefore, with the Monostate pattern, even though multiple object instances can be created, they all behave as if there is only one instance, because they share the same state. This allows the developers to maintain the illusion of a single instance, while avoiding some of the drawbacks associated with Singleton.
+
 If you're interested in the [udemy course](https://www.udemy.com/course/design-patterns-csharp-dotnet) by [Dmitri Nesteruk](https://www.udemy.com/user/dmitrinesteruk/).
