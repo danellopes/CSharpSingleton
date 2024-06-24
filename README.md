@@ -32,4 +32,12 @@ To alleviate this issue, one approach is to create a singleton instance for each
 
 However, this technique may not be applicable in all environments. For example, in Salesforce, developers do not have control over the threads that the platform runs on. As a result, it's not possible to implement a Per-Thread Singleton in this context. This is a limitation to consider when choosing the appropriate design pattern for a given application.
 
+### Ambient Context
+
+The Ambient Context is a design pattern that allows global access to a specific piece of information in the system. It is a method where you segregate the execution context of the code, providing a distinct value of a property for that particular context. For instance, in a house-building project, the wall height on the ground floor might be 3000 units, while on the first floor it might be 3500 units. The Ambient Context pattern allows the software to respond appropriately to the context it is operating within.
+
+This pattern is extremely useful because it allows for the creation of context layers. These layers can dynamically change the software's behavior based on the current context. This is particularly beneficial when used in a Singleton pattern, as it prevents developers from creating multiple instances of context properties that should be unique within the system.
+
+Despite its usefulness, the Ambient Context technique is not suitable for all environments. For example, in Salesforce, developers don't have the ability to control or separate the execution context at runtime. This limitation highlights the importance of selecting the correct design pattern based on the specific requirements and constraints of the software environment.
+
 If you're interested in the [udemy course](https://www.udemy.com/course/design-patterns-csharp-dotnet) by [Dmitri Nesteruk](https://www.udemy.com/user/dmitrinesteruk/).
