@@ -24,4 +24,12 @@ This is achieved by making all the class properties static. In programming, a st
 
 Therefore, with the Monostate pattern, even though multiple object instances can be created, they all behave as if there is only one instance, because they share the same state. This allows the developers to maintain the illusion of a single instance, while avoiding some of the drawbacks associated with Singleton.
 
+### Per-Thread Singleton
+
+In multi-threaded projects, the use of a singleton can cause a bottleneck as it only allows a single instance to run across all threads. This results in threads stalling as they wait for access to the singleton instance, reducing the benefits of multi-threading and resulting in less efficient code execution.
+
+To alleviate this issue, one approach is to create a singleton instance for each thread, a technique known as Per-Thread Singleton. This is achieved using the ThreadLocal construct in C#. ThreadLocal is a type of local data storage that provides a unique value for each thread that accesses it. When applied to the Singleton pattern, it allows each thread to have its own instance of the singleton, thus avoiding the bottleneck caused by multiple threads trying to access a single instance.
+
+However, this technique may not be applicable in all environments. For example, in Salesforce, developers do not have control over the threads that the platform runs on. As a result, it's not possible to implement a Per-Thread Singleton in this context. This is a limitation to consider when choosing the appropriate design pattern for a given application.
+
 If you're interested in the [udemy course](https://www.udemy.com/course/design-patterns-csharp-dotnet) by [Dmitri Nesteruk](https://www.udemy.com/user/dmitrinesteruk/).
